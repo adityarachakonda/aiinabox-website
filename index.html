@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI in a Box</title>
+  <style>
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      background-color: #f8f9fa;
+      padding: 40px 20px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+      position: relative;
+    }
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 10px;
+    }
+    .site-logo {
+      max-height: 60px;
+    }
+    /* Fallback title (hidden by default, shown if logo not loaded) */
+    .site-title {
+      font-size: 2em;
+      margin: 0;
+      display: none; 
+    }
+    header p {
+      margin: 0;
+      color: #555;
+      font-size: 1.2em;
+    }
+
+    /* MAIN CONTAINER for the boxed sections (not the hero sections) */
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    /* ======================
+       HERO SECTIONS (1 & 2)
+       ====================== */
+    .hero-section {
+      /* Spans full width, separate from main container */
+      width: 100%;
+      padding: 60px 0;
+      margin-bottom: 40px;
+      background: #f8f8f8 url('https://via.placeholder.com/1920x600/eeeeee?text=Whitish+Background') center/cover no-repeat;
+    }
+    /* Constrain text within hero section */
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .hero-left-column {
+      flex: 1 1 300px;
+      max-width: 40%;
+    }
+    .hero-right-column {
+      flex: 1 1 400px;
+      max-width: 60%;
+    }
+
+    /* HEADINGS & SUBTITLES in Hero Sections */
+    .hero-section h2 {
+      font-size: 1.8em;
+      margin-bottom: 8px;
+      /* Gradient text effect */
+      background: linear-gradient(to right, #FF7A18, #AF002D, #319197, #8F00FF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
+    .hero-subtitle {
+      font-size: 1em;
+      color: #666;
+      margin: 0 0 15px 0;
+    }
+    /* Hero images (no fade-in needed, but you can add if you want) */
+    .hero-left-column img {
+      max-width: 200px;
+      width: 100%;
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+
+    .hero-right-column p {
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+
+    /* =================================
+       BOXED SECTIONS (Existing Sections)
+       ================================= */
+    section.boxed-section {
+      background-color: #fafafa;
+      padding: 30px;
+      border-radius: 8px;
+      margin-bottom: 40px;
+      border: 1px solid #e8e8e8;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    section.boxed-section:hover {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      transform: translateY(-2px);
+    }
+
+    /* TWO-COLUMN LAYOUT inside boxed sections */
+    .section-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .left-column {
+      flex: 1 1 300px;
+      max-width: 40%;
+    }
+    .right-column {
+      flex: 1 1 400px;
+      max-width: 60%;
+    }
+
+    /* HEADINGS & SUBTITLES (Boxed) */
+    section.boxed-section h2 {
+      font-size: 1.6em;
+      margin-bottom: 8px;
+      /* 4-color gradient text effect */
+      background: linear-gradient(to right, #FF7A18, #AF002D, #319197, #8F00FF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
+    .subtitle {
+      font-size: 1em;
+      color: #666;
+      margin: 0 0 15px 0;
+    }
+
+    /* IMAGES in boxed sections (with fade-in) */
+    .left-column img {
+      width: 100%;
+      max-width: 200px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      opacity: 0; 
+      transition: opacity 1s ease-in-out;
+    }
+    /* Class to reveal images (for fade-in) */
+    .reveal {
+      opacity: 1 !important;
+    }
+
+    /* PARAGRAPH STYLES */
+    .right-column p {
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #f8f9fa;
+      border-top: 1px solid #ddd;
+      color: #555;
+    }
+    footer a {
+      color: #555;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* RESPONSIVE TWEAKS */
+    @media (max-width: 768px) {
+      .hero-left-column, .hero-right-column,
+      .left-column, .right-column {
+        max-width: 100%;
+      }
+    }
+
+  </style>
+</head>
+<body onload="fadeInImages()">
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo-container">
+      <!-- Logo: if it fails to load, fallback text is displayed -->
+      <img 
+        class="site-logo" 
+        src="aiab.png" 
+        alt="AI in a Box Logo" 
+        onerror="this.style.display='none';document.querySelector('.site-title').style.display='block';"
+      />
+      <h1 class="site-title">AI in a Box</h1>
+    </div>
+    <p>Accelerators to Launch AI Products Faster</p>
+  </header>
+
+  <!-- =========================
+       HERO SECTION 1: What We Do
+       ========================= -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-left-column">
+        <h2>What We Do</h2>
+        <p class="hero-subtitle">What We Do</p>
+        <img 
+          src="https://via.placeholder.com/150?text=What+We+Do"
+          alt="What We Do Illustration"
+        />
+      </div>
+      <div class="hero-right-column">
+        <p>
+          At AI in a Box, we specialize in empowering businesses to rapidly launch AI products 
+          that deliver real-world value. Leveraging cutting-edge machine learning and data 
+          analytics, we help you gain insights faster, streamline processes, and unlock new 
+          market opportunities.
+        </p>
+        <p>
+          Our unique selling point is speed. From ideation to deployment, we compress the AI 
+          product lifecycle so you can validate ideas and capture value in record time. Whether 
+          you’re a startup or an established enterprise, our proprietary accelerators, 
+          methodologies, and tooling ensure you stay ahead of the curve in a competitive AI landscape.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       HERO SECTION 2: Our Clients
+       ============================ -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-left-column">
+        <h2>Our Clients</h2>
+        <p class="hero-subtitle">Our Clients</p>
+        <img 
+          src="https://via.placeholder.com/150?text=Clients" 
+          alt="Our Clients Illustration"
+        />
+      </div>
+      <div class="hero-right-column">
+        <p>
+          We are proud to partner with a diverse range of clients, from multinational retailers 
+          to innovative tech startups. Our solutions have been deployed in industries such as 
+          e-commerce, financial services, healthcare, and consumer electronics.
+        </p>
+        <p>
+          Whether it's implementing semantic search for large product catalogs or building 
+          specialized local LLMs to automate workflows, our clients rely on us to drive 
+          meaningful and measurable business impact. By forging collaborative, long-term 
+          relationships, we ensure that each solution remains adaptive to evolving market needs 
+          and technological advances.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================
+       BOXED SECTIONS (original content)
+       ================================== -->
+
+  <main>
+    <!-- Brand Registry -->
+    <section class="boxed-section">
+      <div class="section-content">
+        <div class="left-column">
+          <h2>Brand Registry</h2>
+          <p class="subtitle">Brand Registry</p>
+          <img src="https://via.placeholder.com/150?text=Brand+Logo" alt="Brand Registry Illustration"/>
+        </div>
+        <div class="right-column">
+          <p>
+            We have a registry of 10,000+ brands operating in the US, plus the crawling infrastructure 
+            to extract any number of other brands across different geographies. Our data includes 
+            details on how brands can help a customer and how customers interact with them. 
+          </p>
+          <p>
+            For instance, a luxury brand purchase (like Louis Vuitton) provides insights into 
+            a user's affluence, while shopping at stores like Costco or Walmart highlights a 
+            different facet of consumer behavior. A brand like Titleist or Gibson sheds light on 
+            entirely new segments. With this registry, you can better understand your customers 
+            and craft solutions tailored to their brand affinities.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Semantic Search -->
+    <section class="boxed-section">
+      <div class="section-content">
+        <div class="left-column">
+          <h2>Semantic Search</h2>
+          <p class="subtitle">Semantic Search</p>
+          <img src="https://via.placeholder.com/150?text=Search+Icon" alt="Semantic Search Illustration"/>
+        </div>
+        <div class="right-column">
+          <p>
+            Modern search is no longer about finding mere keywords—it's about identifying the 
+            true intent of a query. Our novel combination of traditional search and latent vector 
+            embedding ensures that if someone searches for “Black Nike basketball shoes with 
+            red highlight,” the system prioritizes “Nike” while finding the best attribute matches 
+            for the rest.
+          </p>
+          <p>
+            These techniques, developed in January 2024, were immediately deployed in InStore, 
+            leveraging our robust setup for lightning-fast, intent-based results.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Response Modelling -->
+    <section class="boxed-section">
+      <div class="section-content">
+        <div class="left-column">
+          <h2>Response Modelling</h2>
+          <p class="subtitle">Response Modelling</p>
+          <img src="https://via.placeholder.com/150?text=Modelling" alt="Response Modelling Illustration"/>
+        </div>
+        <div class="right-column">
+          <p>
+            A critical part of any user interaction—be it on an app or a website—is to understand 
+            what works and what doesn't. Our response modelling engine perpetually learns from 
+            billions of data points each day, tailoring content to each individual's preferences 
+            and behaviors.
+          </p>
+          <p>
+            By showing content users are most likely to click or buy, we ensure higher engagement 
+            and conversion rates across the board.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Local LLM Serving -->
+    <section class="boxed-section">
+      <div class="section-content">
+        <div class="left-column">
+          <h2>Local LLM Serving</h2>
+          <p class="subtitle">Local LLM Serving</p>
+          <img src="https://via.placeholder.com/150?text=Local+LLM" alt="Local LLM Serving Illustration"/>
+        </div>
+        <div class="right-column">
+          <p>
+            Generic LLMs excel at conversational tasks, but they aren't always optimal for highly 
+            specific tasks with strict output requirements. We built a specialized library that 
+            runs on local LLM instances and enforces precise outputs suitable for machine consumption.
+          </p>
+          <p>
+            Features like Pydantic output, recently introduced by commercial LLMs, have been part 
+            of our proprietary library from the start, enabling seamless integration and robust 
+            code interactions with LLMs.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Document Understanding -->
+    <section class="boxed-section">
+      <div class="section-content">
+        <div class="left-column">
+          <h2>Document Understanding</h2>
+          <p class="subtitle">Document Understanding</p>
+          <img src="https://via.placeholder.com/150?text=Entity+Extraction" alt="Entity Extraction Illustration"/>
+        </div>
+        <div class="right-column">
+          <p>
+            We built upon a DBPedia-based Entity Extraction engine that was originally deployed at 
+            VoiceBase and transformed it into an LLM-first approach. By harnessing LLMs as a central 
+            knowledge base, we’ve achieved multi-modal capabilities—our system can process physical 
+            receipts or even audio data and extract relevant entities without needing text conversion.
+          </p>
+          <p>
+            This library is production-ready for image data and is currently being developed and 
+            tested for voice, offering seamless document comprehension regardless of input format.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LLM Powered Recommendations -->
+    <section class="boxed-section">
+      <div class="section-content">
+        <div class="left-column">
+          <h2>LLM Powered Recommendations</h2>
+          <p class="subtitle">LLM Powered Recommendations</p>
+          <img src="https://via.placeholder.com/150?text=LLM+Reco" alt="LLM Recommendations Illustration"/>
+        </div>
+        <div class="right-column">
+          <p>
+            Recommendations are about aligning the right content with the right users. Our library 
+            feeds the user’s past behavior into an LLM, which then uses a vector-based embedding 
+            to find content with the closest match.
+          </p>
+          <p>
+            We’ve deployed this approach to great effect, delivering outstanding results for our 
+            clients. By merging classic recommender system logic with modern LLM and embedding 
+            techniques, we boost relevance and user satisfaction.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI Product Image Generation -->
+    <section class="boxed-section">
+      <div class="section-content">
+        <div class="left-column">
+          <h2>AI Product Image Generation</h2>
+          <p class="subtitle">AI Product Image Generation</p>
+          <img src="https://via.placeholder.com/150?text=AI+Image" alt="AI Product Image Generation Illustration"/>
+        </div>
+        <div class="right-column">
+          <p>
+            We built a library that places real-world products into artificially generated 
+            environments, producing picture-perfect product photos. Unlike many unconstrained 
+            AI-generated images that may be eye-catching but lack business utility, our approach 
+            algorithmically constrains images for practical outcomes.
+          </p>
+          <p>
+            Whether you need consistent branding, contextual backgrounds, or stylized imagery, 
+            our system can deliver professional, on-brand visuals every time.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Operations Research -->
+    <section class="boxed-section">
+      <div class="section-content">
+        <div class="left-column">
+          <h2>Operations Research</h2>
+          <p class="subtitle">Operations Research</p>
+          <img src="https://via.placeholder.com/150?text=Operations" alt="Operations Research Illustration"/>
+        </div>
+        <div class="right-column">
+          <p>
+            Translating complex business and operational requirements into mathematical constraints 
+            can be challenging. Our in-house translation layer software, integrated with popular 
+            solvers like CVXOPT, Mosek, and Gurobi, supports both open-source and commercial-grade 
+            solvers.
+          </p>
+          <p>
+            This flexibility allows you to handle everything from small-scale linear optimizations 
+            to large-scale number-crunching, enabling an operations framework that is both 
+            powerful and efficient.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Forecasting -->
+    <section class="boxed-section">
+      <div class="section-content">
+        <div class="left-column">
+          <h2>Forecasting</h2>
+          <p class="subtitle">Forecasting</p>
+          <img src="https://via.placeholder.com/150?text=Forecast" alt="Forecasting Illustration"/>
+        </div>
+        <div class="right-column">
+          <p>
+            Our high-performance forecasting engine predicts user access patterns up to 60 days 
+            into the future, a critical component of advertising systems that enable companies 
+            to book deals in advance.
+          </p>
+          <p>
+            By combining classical statistical methods with cutting-edge deep learning models, 
+            our forecasting library ensures reliability, scalability, and a competitive edge in 
+            planning and resource allocation.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LLM Finetuning -->
+    <section class="boxed-section">
+      <div class="section-content">
+        <div class="left-column">
+          <h2>LLM Finetuning</h2>
+          <p class="subtitle">LLM Finetuning</p>
+          <img src="https://via.placeholder.com/150?text=Finetuning" alt="LLM Finetuning Illustration"/>
+        </div>
+        <div class="right-column">
+          <p>
+            Large LLMs can be expensive when you only need specific tasks solved. Our fine-tuning 
+            library on UnSloth LLM Finetuning creates smaller, task-specific LLMs that run efficiently 
+            while still delivering high-quality results.
+          </p>
+          <p>
+            This approach lets you focus on specialized tasks without the cost and complexity of a 
+            massive general-purpose model, offering faster insights and better ROI.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      &copy; 2025 AI in a Box. All rights reserved. | 
+      <a href="https://aiinabox.in" target="_blank">aiinabox.in</a>
+    </p>
+  </footer>
+
+  <!-- JavaScript for Fade-in Animation on images in the boxed sections -->
+  <script>
+    function fadeInImages() {
+      const images = document.querySelectorAll('.boxed-section img');
+      images.forEach((img, index) => {
+        // Add a slight delay so they fade in one after another
+        setTimeout(() => {
+          img.classList.add('reveal');
+        }, index * 200);
+      });
+    }
+  </script>
+
+</body>
+</html>
