@@ -274,15 +274,18 @@
   <section class="hero-section">
     <div class="hero-content">
       <p>
-        At AI in a Box, we specialize in empowering businesses to rapidly launch AI products 
-        that deliver real-world value. Leveraging cutting-edge machine learning and data 
-        analytics, we help you gain insights faster, streamline processes, and unlock new 
-        market opportunities.
+        AI in a Box, is a series of packaged AI use cases which can serve to accelerate product
+        launches involving Artificial Intelligence or Machine Learning significantly. We use our
+        decades of experience in the industry to clearly identify various kinds of risks in AI
+        development life cycle and prempt them with simple and focussed solutions which solve specific 
+        problems way faster. 
+        We stand on the shoulders of giants by building upon the open source AI and ML algorithms and ideas 
+        and translate generic open source libraries into task specific solutions in the most optimal way.
       </p>
       <p>
         Our unique selling point is speed. From ideation to deployment, we compress the AI 
         product lifecycle so you can validate ideas and capture value in record time. Whether 
-        you’re a startup or an established enterprise, our proprietary accelerators, 
+        you are a startup or an established enterprise, our proprietary accelerators, 
         methodologies, and tooling ensure you stay ahead of the curve in a competitive AI landscape.
       </p>
     </div>
@@ -294,27 +297,26 @@
        ========================= -->
   <section class="hero-section clients-hero">
     <div class="hero-content">
-      <div class="hero-left-column">
-        <!-- No h2 / subtitle here, as requested -->
+      <div class="left-column">
+        <h2>Our Clients</h2>
+      </div>
+      <div class="right-column">
+        <img 
+        src="soon.png"
+        alt="Our Clients Illustration"
+        width="150px"
+        />
         <img 
           src="soon.png"
           alt="Our Clients Illustration"
+          width="150px"
         />
-      </div>
-      <div class="hero-right-column">
-        <p>
-          We are proud to partner with a diverse range of clients, from multinational retailers 
-          to innovative tech startups. Our solutions have been deployed in industries such as 
-          e-commerce, financial services, healthcare, and consumer electronics.
-        </p>
-        <p>
-          Whether it's implementing semantic search for large product catalogs or building 
-          specialized local LLMs to automate workflows, our clients rely on us to drive 
-          meaningful and measurable business impact. By forging collaborative, long-term 
-          relationships, we ensure that each solution remains adaptive to evolving market needs 
-          and technological advances.
-        </p>
-      </div>
+        <img 
+          src="soon.png"
+          alt="Our Clients Illustration"
+          width="150px"
+        />
+      </div>      
     </div>
   </section>
 
@@ -322,28 +324,31 @@
        BOXED SECTIONS (remaining content)
        ================================== -->
 
-  <h1 style="text-align:center"> Our Products </h1>
+  <h1 style="text-align:center">Our Products</h1>
   <main>
     <!-- Brand Registry -->
     <section class="boxed-section">
       <div class="section-content">
         <div class="left-column">
-          <h2>Brand Registry</h2>
-          <p class="subtitle">Brand Registry</p>
+          <h2>Longlegs</h2>
+          <p class="subtitle">Focussed Brand Information Crawler guided by LLMs on Traditional Search Engines</p>
           <!-- Placeholder image changed to soon.png -->
-          <img src="soon.png" alt="Brand Registry Illustration"/>
+          <img src="rtl.png" alt="Brand Registry Illustration"/>
         </div>
         <div class="right-column">
           <p>
-            We have a registry of 10,000+ brands operating in the US, plus the crawling infrastructure 
-            to extract any number of other brands across different geographies. Our data includes 
-            details on how brands can help a customer and how customers interact with them. 
+            We crawl the Web for brands and extract relevant information to understand various facets of a 
+            brand. We can quickly gather details about thousands of brands in different verticals based
+            on our clients' business needs. We use a proprietary crawler seeded with initial brands either
+            provided by the client or from a weel-known knowledge base like DBPedia. We  use an combination 
+            of LLM guided crawls and searches and quickly extract troves of specific information to create
+            brand data.
           </p>
           <p>
             For instance, a luxury brand purchase (like Louis Vuitton) provides insights into 
             a user's affluence, while shopping at stores like Costco or Walmart highlights a 
             different facet of consumer behavior. A brand like Titleist or Gibson sheds light on 
-            entirely new segments. With this registry, you can better understand your customers 
+            entirely new segments. With this brand registry, you can better understand your customers 
             and craft solutions tailored to their brand affinities.
           </p>
         </div>
@@ -354,21 +359,51 @@
     <section class="boxed-section">
       <div class="section-content">
         <div class="left-column">
-          <h2>Semantic Search</h2>
-          <p class="subtitle">Semantic Search</p>
-          <img src="soon.png" alt="Semantic Search Illustration"/>
+          <h2>OmniSearch</h2>
+          <p class="subtitle">Multi-modal Semantic Search integrating Images, Audio, Keywords and Semantics</p>
+          <img src="rtl.png" alt="Semantic Search Illustration"/>
         </div>
         <div class="right-column">
           <p>
-            Modern search is no longer about finding mere keywords—it's about identifying the 
-            true intent of a query. Our novel combination of traditional search and latent vector 
-            embedding ensures that if someone searches for “Black Nike basketball shoes with 
+            Modern search is no longer just about text it also encompasses audio, video and images. 
+            Search is not about finding mere keywords—it's about identifying the 
+            true intent of a query and finding relevant content whether or not we have the text. 
+            Our novel combination of traditional search and latent vector 
+            embedding of content and queries ensures that if someone searches for “Black Nike basketball shoes with 
             red highlight,” the system prioritizes “Nike” while finding the best attribute matches 
-            for the rest.
+            for the rest in the images, description and reviews.
           </p>
           <p>
-            These techniques, developed in January 2024, were immediately deployed in InStore, 
-            leveraging our robust setup for lightning-fast, intent-based results.
+            We pioneered a new ranking methodology based on our original research and combine different 
+            indices and allow our clients to tune search relevance accordingly. We use a combination of Solr,
+            Vector Databases and Embedding models to achieve our results. We have shown significant uplift when 
+            compared to commercially product search engines employed by large e-commerce players.
+
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Local LLM Serving -->
+    <section class="boxed-section">
+      <div class="section-content">
+        <div class="left-column">
+          <h2>Liminal</h2>
+          <p class="subtitle">Task Oriented local LLM serving</p>
+          <img src="soon.png" alt="Local LLM Serving Illustration"/>
+        </div>
+        <div class="right-column">
+          <p>
+            Generic LLMs excel at conversational tasks, but they aren't always optimal for highly 
+            specific tasks with strict output requirements. We built a specialized library that 
+            runs on local LLM instances and enforces precise outputs suitable for machine consumption.
+            We make it stupidly simple to programmatically configure new tasks and set up LLM inference 
+            endpoints.
+          </p>
+          <p>
+            On top of vLLM serving we enable features like Pydantic output, with task specific caching.
+            These advances recently introduced by commercial LLMs, have been part of our proprietary 
+            library from the start, enabling seamless integration and robust code interactions with LLMs.
           </p>
         </div>
       </div>
@@ -378,9 +413,9 @@
     <section class="boxed-section">
       <div class="section-content">
         <div class="left-column">
-          <h2>Response Modelling</h2>
-          <p class="subtitle">Response Modelling</p>
-          <img src="soon.png" alt="Response Modelling Illustration"/>
+          <h2>ClickSense</h2>
+          <p class="subtitle">User response modelling at scale through CTR and CVR prediction</p>
+          <img src="rtl.png" alt="Response Modelling Illustration"/>
         </div>
         <div class="right-column">
           <p>
@@ -397,43 +432,22 @@
       </div>
     </section>
 
-    <!-- Local LLM Serving -->
-    <section class="boxed-section">
-      <div class="section-content">
-        <div class="left-column">
-          <h2>Local LLM Serving</h2>
-          <p class="subtitle">Local LLM Serving</p>
-          <img src="soon.png" alt="Local LLM Serving Illustration"/>
-        </div>
-        <div class="right-column">
-          <p>
-            Generic LLMs excel at conversational tasks, but they aren't always optimal for highly 
-            specific tasks with strict output requirements. We built a specialized library that 
-            runs on local LLM instances and enforces precise outputs suitable for machine consumption.
-          </p>
-          <p>
-            Features like Pydantic output, recently introduced by commercial LLMs, have been part 
-            of our proprietary library from the start, enabling seamless integration and robust 
-            code interactions with LLMs.
-          </p>
-        </div>
-      </div>
-    </section>
 
     <!-- Document Understanding -->
     <section class="boxed-section">
       <div class="section-content">
         <div class="left-column">
-          <h2>Document Understanding</h2>
-          <p class="subtitle">Document Understanding</p>
-          <img src="soon.png" alt="Document Understanding Illustration"/>
+          <h2>DeepExtract</h2>
+          <p class="subtitle">Document Understanding from Transcripts, PDFs, Images and Text</p>
+          <img src="rtl.png" alt="Document Understanding Illustration"/>
         </div>
         <div class="right-column">
           <p>
-            We built upon a DBPedia-based Entity Extraction engine that was originally deployed at 
-            VoiceBase and transformed it into an LLM-first approach. By harnessing LLMs as a central 
-            knowledge base, we’ve achieved multi-modal capabilities—our system can process physical 
-            receipts or even audio data and extract relevant entities without needing text conversion.
+            We built an LLM-first entity extraction engine that can understand malforformed data like
+            error-laden transcripts and noisy images and convert that into stored and queryable entities.
+            By harnessing LLMs as a central knowledge base, instead of a conversational agent, we achieved 
+            multi-modal capabilities. Our system can process physical receipts or even audio data and 
+            extract relevant entities without needing text conversion.
           </p>
           <p>
             This library is production-ready for image data and is currently being developed and 
@@ -447,18 +461,21 @@
     <section class="boxed-section">
       <div class="section-content">
         <div class="left-column">
-          <h2>LLM Powered Recommendations</h2>
-          <p class="subtitle">LLM Powered Recommendations</p>
+          <h2>SwishList</h2>
+          <p class="subtitle">LLM Powered Relevance Layer for Recommendations</p>
           <img src="soon.png" alt="LLM Recommendations Illustration"/>
         </div>
         <div class="right-column">
           <p>
             Recommendations are about aligning the right content with the right users. Our library 
-            feeds the user’s past behavior into an LLM, which then uses a vector-based embedding 
-            to find content with the closest match.
+            uses LLMs to incrementally embed a user’s past behavior into a vector space. We embed content
+            into the same space to identify the content that is most relevant to the user's behaviour.
+
+            Using this library one can also get goal specific recommendations like cross selling, 
+            up selling or attaching accessories.
           </p>
           <p>
-            We’ve deployed this approach to great effect, delivering outstanding results for our 
+            We have deployed this approach to great effect, delivering outstanding results for our 
             clients. By merging classic recommender system logic with modern LLM and embedding 
             techniques, we boost relevance and user satisfaction.
           </p>
@@ -470,16 +487,16 @@
     <section class="boxed-section">
       <div class="section-content">
         <div class="left-column">
-          <h2>AI Product Image Generation</h2>
-          <p class="subtitle">AI Product Image Generation</p>
-          <img src="soon.png" alt="AI Product Image Generation Illustration"/>
+          <h2>Photogenic</h2>
+          <p class="subtitle">AI Product Photoshoot Image Generation</p>
+          <img src="rtl.png" alt="AI Product Image Generation Illustration"/>
         </div>
         <div class="right-column">
           <p>
             We built a library that places real-world products into artificially generated 
             environments, producing picture-perfect product photos. Unlike many unconstrained 
             AI-generated images that may be eye-catching but lack business utility, our approach 
-            algorithmically constrains images for practical outcomes.
+            algorithmically constrains images using a variety of ControlNets for practical outcomes.
           </p>
           <p>
             Whether you need consistent branding, contextual backgrounds, or stylized imagery, 
@@ -493,7 +510,7 @@
     <section class="boxed-section">
       <div class="section-content">
         <div class="left-column">
-          <h2>Operations Research</h2>
+          <h2>OptimiCraft</h2>
           <p class="subtitle">Operations Research</p>
           <img src="soon.png" alt="Operations Research Illustration"/>
         </div>
@@ -517,9 +534,9 @@
     <section class="boxed-section">
       <div class="section-content">
         <div class="left-column">
-          <h2>Forecasting</h2>
-          <p class="subtitle">Forecasting</p>
-          <img src="soon.png" alt="Forecasting Illustration"/>
+          <h2>Prophesize</h2>
+          <p class="subtitle">Traffic Forecasting System to Predict Audience Segments</p>
+          <img src="rtl.png" alt="Forecasting Illustration"/>
         </div>
         <div class="right-column">
           <p>
@@ -540,14 +557,14 @@
     <section class="boxed-section">
       <div class="section-content">
         <div class="left-column">
-          <h2>LLM Finetuning</h2>
-          <p class="subtitle">LLM Finetuning</p>
+          <h2>DialUp</h2>
+          <p class="subtitle">LLM Finetuning System to Compress Task Specific LLMs</p>
           <img src="soon.png" alt="LLM Finetuning Illustration"/>
         </div>
         <div class="right-column">
           <p>
-            Large LLMs can be expensive when you only need specific tasks solved. Our fine-tuning 
-            library on UnSloth LLM Finetuning creates smaller, task-specific LLMs that run efficiently 
+            Large LLMs can be expensive when we only need specific tasks to be solved. Our fine-tuning 
+            library built on UnSloth LLM Finetuning creates smaller, task-specific LLMs that run efficiently 
             while still delivering high-quality results.
           </p>
           <p>
@@ -562,8 +579,9 @@
   <!-- FOOTER -->
   <footer>
     <p>
-      &copy; 2025 AI in a Box. All rights reserved. | 
+      &copy; 2004-25 AI in a Box, Minivet AI Consulting LLP. All rights reserved. | 
       <a href="https://aiinabox.in" target="_blank">aiinabox.in</a>
+      <a href="https://minivet.ai" target="_blank">minivet.ai</a>
     </p>
   </footer>
 
